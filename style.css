@@ -71,7 +71,7 @@ img {
 /* The Paper Slot: positioned at the slit, clipping anything below it */
 .receipt-slot {
     position: absolute;
-    bottom: 170px; /* anchored right at the printer slit */
+    bottom: 140px; /* anchored right at the printer slit */
     width: 190px;
     height: 350px; /* Extends upwards into the air */
     overflow: hidden; /* clips paper so it never shows below the slit */
