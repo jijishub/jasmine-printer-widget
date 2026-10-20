@@ -1,0 +1,7 @@
+LLM.txt
+.env*
+!env.example
+/obj
+/bin
+pseudo-code.json
+jasmine.cs

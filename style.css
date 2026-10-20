@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-color: #fceef3; */
+    background-color: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #5c3a4d;
+    overflow: hidden; /* prevents desktop scrollbars */
+}
+
+/* make pixel art sharp and crisp, never blurry */
+img {
+    image-rendering: pixelated;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Main widget container */
+.widget-wrapper {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* keeps printer grounded at the bottom */
+}
+
+/* 1. The printer whole body (in front) */
+.printer {
+    position: absolute;
+    bottom: 0;
+    width: 280px;
+    z-index: 1; /* In front of receipt */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.printer-img {
+    width: 100%;
+    display: block;
+}
+
+/* 2. The printer's front (cropped) */
+.printer-front {
+    position: absolute;
+    bottom: 0;
+    width: 280px;
+    z-index: 3; /* In front of receipt */
+    cursor: pointer;
+    pointer-events: none; /* Tells the browser: let mouse clicks pass right through me to the buttons! */
+}
+
+.printer-hover {
+    transform: scale(1.02);
+}
+
+.printer-front-img {
+    width: 100%;
+    display: block;
+}
+
+/* The Paper Slot: positioned at the slit, clipping anything below it */
+.receipt-slot {
+    position: absolute;
+    bottom: 170px; /* anchored right at the printer slit */
+    width: 190px;
+    height: 350px; /* Extends upwards into the air */
+    overflow: hidden; /* clips paper so it never shows below the slit */
+    z-index: 2; /*in the middle of printer back and front */
+    display: flex;
+    justify-content: center;
+    /* 3d Isometric Slant */ 
+    transform-origin: bottom center; /* pivots right at the slit */
+    transform: rotate(6deg) skewY(5deg); /* Tilts the paper along the slit */
+}
+
+/* 3. The receipt (tucked behind the printer) */
+.receipt {
+    width: 100%;
+    position: absolute;
+    margin-right: 15px;
+    bottom: 0; 
+    /* Initially tuckerd inside the slot, hides it with just a cute edge peeking */
+    transform: translateY(70%); 
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity: 1;
+}
+
+/* When hovering the widget, the paper rolls out upwards! */
+.widget-wrapper:hover .receipt,
+.widget-wrapper.active .receipt {
+    transform: translateY(20%); 
+} 
+
+.receipt-bg {
+    width: 100%;
+    display: block;
+}
+
+/* Text overlay on the paper scroll */
+.receipt-content {
+    position: absolute;
+    top: 45px;
+    left: 23%;
+    right: 15%;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.receipt-header {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #7b4c63;
+    margin-bottom: 10px;
+    border-bottom: 3px dashed #dca5b8;
+    padding-bottom: 8px;
+    width: 95%;
+    margin: 0 auto 10px auto;
+}
+
+/* List of hobbies */
+.hobby-list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hobby-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 10px; 
+    gap: 4px;
+}
+
+.hobby-title {
+    text-align: left;
+    flex: 1; /* Stretches to fill the space */
+    line-height: 1.2; /* Clean line spacing if text wraps */
+}
+
+/* the clickable '+' bump button */
+.bump-btn {
+    flex-shrink: 0; /* lockes the `+` button in its vertical column */
+    background: transparent;
+    border: none;
+    color: #4a2839;
+    font-weight: bold;
+    border-radius: 3px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    transition: transform 0.1s, background 0.1s;
+}
+
+.bump-btn:hover {
+    background: none;
+    transform: scale(1.5);
+}
+
+.bump-btn:active {
+    transform: scale(0.9);
+}
