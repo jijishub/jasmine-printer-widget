@@ -1,4 +1,4 @@
-# Jasmine Printer Widget
+# Jasmine Printer Widget 🌸🖨️📜
 
 This is a mini pet project widget I use to practice my C# and JavaScript.
 
