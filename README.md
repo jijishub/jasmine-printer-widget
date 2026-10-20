@@ -13,6 +13,7 @@ Because the entire widget runs on just four core files (`index.html`, `style.css
 
 ## Running Locally
 **Prerequisites:** Windows 10/11 and [.NET 8.0 SDK]
+
 In terminal:
 ```
 winget install Microsoft.DotNet.SDK.8
