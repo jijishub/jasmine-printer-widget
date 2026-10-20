@@ -22,7 +22,7 @@ namespace IMissCSharp
             {
                 Title = "Jasmine Printer",
                 Width = 360,
-                Height = 460,
+                Height = 550,
                 WindowStyle = WindowStyle.None, // No title bar or window borders
                 AllowsTransparency = true, //enables desktop transparency
                 Background = new SolidColorBrush(Color.FromArgb(1, 0, 0, 0)), // transparent window canvas
