@@ -7,6 +7,9 @@ const hobbyTitles =[
     "Webtoons",
     "Poems and essay",
     "Delta Games & PC Games",
+    "Reading",
+    "Art",
+    "Watch series",
 ];
 
 const savedScores = JSON.parse(localStorage.getItem("hobbyScores")|| "{}");
@@ -20,7 +23,7 @@ const hobbies = hobbyTitles.map((title, index) => ({
 //3. Functional pipeline: pure function returning top 5 lowest scores
 const getTopForgottenHobbies = () => [...hobbies]
     .sort((a, b) => (a.score - b.score) || (a.id - b.id))
-    .slice(0, 7)
+    .slice(0, 10)
 
 // 4. Component Render: Pure state-to-DOM projection
 function renderHobbies() {
