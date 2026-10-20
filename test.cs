@@ -26,7 +26,7 @@ namespace IMissCSharp
                 WindowStyle = WindowStyle.None, // No title bar or window borders
                 AllowsTransparency = true, //enables desktop transparency
                 Background = new SolidColorBrush(Color.FromArgb(1, 0, 0, 0)), // transparent window canvas
-                Topmost = true, // keeps printer floating above other windows
+                Topmost = false, // true = keeps printer floating above other windows
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
 
@@ -66,6 +66,12 @@ namespace IMissCSharp
                         ReleaseCapture();
                         var hwnd = new System.Windows.Interop.WindowInteropHelper(window).Handle;
                         SendMessage(hwnd, 0xA1, 0x2, 0); // 2. Tells Windows OS to drag the window!
+                    });
+                }
+                else if (e.TryGetWebMessageAsString() == "toggle_pin"){
+                    window.Dispatcher.Invoke(() =>
+                    {
+                        window.Topmost = !window.Topmost; // Flips true <-> false
                     });
                 }
             };
