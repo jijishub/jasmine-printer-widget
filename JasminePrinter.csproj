@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-  <None Update="index.html;style.css;test.js;public\**">
+  <None Update="index.html;style.css;test.js;config.js;public\**;modes\**">
 
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
