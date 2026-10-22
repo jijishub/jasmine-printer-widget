@@ -80,7 +80,7 @@ img {
     justify-content: center;
     /* 3d Isometric Slant */ 
     transform-origin: bottom center; /* pivots right at the slit */
-    transform: rotate(6deg) skewY(5deg); /* Tilts the paper along the slit */
+    transform: rotate(4deg) skewY(6deg); /* Tilts the paper along the slit */
 }
 
 /* 3. The receipt (tucked behind the printer) */
